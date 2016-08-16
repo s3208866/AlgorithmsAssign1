@@ -1,4 +1,4 @@
-package lordhelpme;
+
 
 import java.io.*;
 import java.util.*;
@@ -220,7 +220,7 @@ public class GraphTester
 				graph = new AdjMatrix<String>();
 				break;
 		    case "sample":
-		    	graph = new SampleImplementation<String>();
+		    	//graph = new SampleImplementation<String>();
 		    	break;
 			default:
 				System.err.println("Unknown implmementation type.");

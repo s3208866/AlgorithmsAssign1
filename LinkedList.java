@@ -1,4 +1,4 @@
-package lordhelpme;
+
 
 public class LinkedList{
 	private String name;
@@ -28,14 +28,26 @@ public class LinkedList{
 		size++;
 	}
 	
+	public Node getHead(){
+		return head;
+	}
+	
 	public String getName(){
 		return name;
+	}
+	
+	public void printNodes(){
+		Node currNode = head;
+		while(currNode != null){
+			System.out.println(currNode.getLabel());
+			currNode = currNode.getNext();
+		}
 	}
 	
 	
 	
 public static class Node {
-	private static String nlabel;
+	private String nlabel;
 	private Node nextNode;
 	private Node prevNode;
 	

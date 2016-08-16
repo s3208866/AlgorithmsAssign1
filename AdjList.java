@@ -1,4 +1,4 @@
-package lordhelpme;
+
 
 import java.io.*;
 import java.util.*;
@@ -48,11 +48,12 @@ public class AdjList <T extends Object> implements FriendshipGraph<T>
     public void addEdge(T srcLabel, T tarLabel) {
     	
         for(int x=0; x<verts.length; x++){
-        	if(verts[x].getName() == (String)srcLabel){
-        		
+        	if(verts[x].getName().equals((String)srcLabel)){
+    
         		for(int y=0; y<verts.length; y++){
-        			if(verts[y].getName() == (String)tarLabel){
+        			if(verts[y].getName().matches((String)tarLabel)){
         				verts[x].addNode((String)tarLabel);
+        				System.out.println("successfully added");
         			}
         		}
         	}
@@ -92,7 +93,7 @@ public class AdjList <T extends Object> implements FriendshipGraph<T>
 	
     
     public void printEdges(PrintWriter os) {
-        // Implement me!
+       os.println(verts[0].getHead().getLabel());
     } // end of printEdges()
     
     
