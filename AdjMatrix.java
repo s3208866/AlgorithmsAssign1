@@ -19,7 +19,7 @@ public class AdjMatrix <T extends Object> implements FriendshipGraph<T>
 	 * Contructs empty graph.
 	 */
 	int size;
-	boolean [][] aM;
+	boolean[][] aM;
 	Map<String,Integer> m;
 	
 	
@@ -30,7 +30,16 @@ public class AdjMatrix <T extends Object> implements FriendshipGraph<T>
     	aM = new boolean[size][size];
     } // end of AdjMatrix()
     
-    
+    private boolean[][] copyMatrix(boolean[][] m){
+    	boolean[][] newMatrix = new boolean[size][size];
+    	for(int x=0; x<size-1; x++){
+    		for(int y=0; y<size-1; y++){
+    			newMatrix[x][y] = m[x][y];
+    		}
+    	}
+    	return newMatrix;
+    }
+	
 	public void addVertex(T vertLabel) {
     	if(size == 0){
 	        m.put((String)vertLabel, size);
@@ -41,7 +50,7 @@ public class AdjMatrix <T extends Object> implements FriendshipGraph<T>
     	else{
     		m.put((String)vertLabel, size);
     		size++;
-    		aM = new boolean[size][size];
+    		aM = copyMatrix(aM);
     	}
     	
     } // end of addVertex()
@@ -73,7 +82,28 @@ public class AdjMatrix <T extends Object> implements FriendshipGraph<T>
     
     
     public void removeVertex(T vertLabel) {
-        // Implement me!
+        for(Map.Entry e : m.entrySet()){
+        	
+        	String key = (String)e.getKey();
+        	
+        	if(key.matches((String)vertLabel)){
+        		int index = (int)e.getValue();
+        		
+        		for(int x=(index-1); x>=0; x--){
+        			for(int y=(index-1); y>=0; y--){
+        				aM[x][y] = aM[x+1][y+1];
+        			}
+        		}
+        		m.remove(key);
+            	break;
+        	}
+        }
+
+    	
+    	
+    	
+    	
+    	
     } // end of removeVertex()
 	
     
